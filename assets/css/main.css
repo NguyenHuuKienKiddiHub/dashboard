@@ -1,0 +1,18 @@
+@import "tailwindcss";
+@import "@nuxt/ui";
+
+@theme static {
+  --font-sans: 'Nunito', sans-serif;
+
+  --color-kiddihub-50: #f0fdf4;
+  --color-kiddihub-100: #dcfce7;
+  --color-kiddihub-200: #bbf7d0;
+  --color-kiddihub-300: #86efac;
+  --color-kiddihub-400: #18AD4A;
+  --color-kiddihub-500: #18AD4A;
+  --color-kiddihub-600: #16a34a;
+  --color-kiddihub-700: #15803d;
+  --color-kiddihub-800: #166534;
+  --color-kiddihub-900: #14532d;
+  --color-kiddihub-950: #052e16;
+}
