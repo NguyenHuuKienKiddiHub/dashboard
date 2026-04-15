@@ -5,7 +5,7 @@
     <!-- Left: icon + title -->
     <div class="flex items-center gap-1.5">
       <UButton
-        icon="i-heroicons-building-office-2"
+        icon="i-lucide-panel-left-close"
         variant="ghost"
         color="neutral"
         size="sm"

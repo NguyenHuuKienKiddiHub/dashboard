@@ -8,7 +8,7 @@
       <div class="flex items-center gap-1">
         <div class="flex items-center gap-1">
           <UIcon
-            name="i-heroicons-building-office-2"
+            name="i-lucide-check"
             class="w-3 h-3 text-primary-600 shrink-0"
           />
           <span
@@ -19,7 +19,7 @@
         <span class="text-primary-600 text-xs leading-4">·</span>
         <div class="flex items-center gap-1">
           <UIcon
-            name="i-heroicons-shield-check"
+            name="i-lucide-check"
             class="w-3 h-3 text-primary-600 shrink-0"
           />
           <span
@@ -62,7 +62,7 @@
         value-key="value"
         size="xs"
         placeholder="Sale phụ trách"
-        leading-icon="i-heroicons-user"
+        leading-icon="i-lucide-user"
         searchable
         class="w-full"
       />
@@ -72,7 +72,7 @@
         value-key="value"
         size="xs"
         placeholder="Cskh phụ trách"
-        leading-icon="i-heroicons-building-office"
+        leading-icon="i-lucide-user-round-pen"
         searchable
         class="w-full"
       />
@@ -84,10 +84,7 @@
         :href="`tel:${school.contact?.hotlines?.[0]?.hotline}`"
         class="flex items-center gap-1.5 p-1.5 rounded-md text-gray-500 hover:bg-gray-50 transition-colors"
       >
-        <UIcon
-          name="i-heroicons-phone-arrow-up-right"
-          class="w-4 h-4 shrink-0"
-        />
+        <UIcon name="i-lucide-phone-call" class="w-4 h-4 shrink-0" />
         <span class="text-xs font-medium leading-4">
           Hotline: {{ school.contact?.hotlines?.[0]?.hotline ?? "—" }}
         </span>
@@ -110,6 +107,8 @@
           :model-value="verify"
           color="primary"
           size="xs"
+          unchecked-icon="i-lucide-x"
+          checked-icon="i-lucide-check"
           @update:model-value="onVerifyRequest"
         />
         <span class="text-xs font-medium text-gray-800">Xác minh</span>
@@ -119,6 +118,8 @@
           :model-value="member"
           color="primary"
           size="xs"
+          unchecked-icon="i-lucide-x"
+          checked-icon="i-lucide-check"
           @update:model-value="onMemberRequest"
         />
         <span class="text-xs font-medium text-gray-800">Web</span>
@@ -138,7 +139,7 @@
         color="neutral"
         variant="solid"
         size="sm"
-        icon="i-heroicons-ellipsis-horizontal"
+        icon="i-lucide-ellipsis"
         square
         class="bg-neutral-900 text-white hover:bg-neutral-800"
       />
