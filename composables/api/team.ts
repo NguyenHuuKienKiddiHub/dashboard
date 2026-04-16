@@ -2,12 +2,7 @@ import type { ApiResponse } from '~/types/api'
 import type { TeamMember } from '~/types/models'
 
 export function useTeamApi() {
-    const { public: { apiBase, apiToken } } = useRuntimeConfig()
-
-    const headers = {
-        Authorization: `Bearer ${apiToken}`,
-        Origin: 'http://dashboard.kiddihub.test',
-    }
+    const { public: { apiBase } } = useRuntimeConfig()
 
     /**
      * List members of a team.
@@ -17,7 +12,7 @@ export function useTeamApi() {
         return useApiGet<ApiResponse<TeamMember>>(
             `${apiBase}/team/members`,
             { team: teamId },
-            { lazy: true, headers }
+            { lazy: true }
         )
     }
 

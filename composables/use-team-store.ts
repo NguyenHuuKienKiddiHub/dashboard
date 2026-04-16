@@ -12,27 +12,19 @@ import type { TeamMember } from '~/types/models'
  *    on every subsequent component mount.
  */
 export function useTeamStore() {
-    const { public: { apiBase, apiToken } } = useRuntimeConfig()
-    const headers = {
-        Authorization: `Bearer ${apiToken}`,
-        Origin: 'http://dashboard.kiddihub.test',
-    }
+    const { public: { apiBase } } = useRuntimeConfig()
 
     const { data: salers } = useAsyncData(
         'team:salers',
-        () => $fetch<ApiResponse<TeamMember>>(`${apiBase}/team/members`, {
-            query: { team: 3 },
-            headers,
-        }).then(r => r.data),
+        () => useApiGetFetch<ApiResponse<TeamMember>>(`${apiBase}/team/members`, { team: 3 })
+            .then(r => r.data),
         { default: () => [] as TeamMember[] }
     )
 
     const { data: cskhList } = useAsyncData(
         'team:cskh',
-        () => $fetch<ApiResponse<TeamMember>>(`${apiBase}/team/members`, {
-            query: { team: 11 },
-            headers,
-        }).then(r => r.data),
+        () => useApiGetFetch<ApiResponse<TeamMember>>(`${apiBase}/team/members`, { team: 11 })
+            .then(r => r.data),
         { default: () => [] as TeamMember[] }
     )
 

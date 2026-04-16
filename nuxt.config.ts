@@ -9,7 +9,7 @@ export default defineNuxtConfig({
     public: {
       // Accessible on both server and client — populated from .env
       apiBase: process.env.API_BASE ?? 'https://api.kiddihub.com/v2',
-      apiToken: process.env.API_TOKEN ?? '',
+      loginUrl: process.env.LOGIN_URL ?? 'https://kiddihub.site/login',
     },
   },
 
@@ -19,9 +19,7 @@ export default defineNuxtConfig({
 
   css: ['~/assets/css/main.css'],
 
-  routeRules: {
-    '/': { prerender: true }
-  },
+  routeRules: {},
 
   compatibilityDate: '2025-01-15',
 
@@ -37,7 +35,7 @@ export default defineNuxtConfig({
   },
 
   imports: {
-    dirs: ['composables/api']
+    dirs: ['composables/api', 'composables/api/school']
   },
 
   eslint: {

@@ -6,6 +6,6 @@ export function useEnv() {
     const config = useRuntimeConfig()
     return {
         apiBase: config.public.apiBase as string,
-        apiToken: config.public.apiToken as string,
+        loginUrl: config.public.loginUrl as string,
     }
 }
