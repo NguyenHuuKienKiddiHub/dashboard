@@ -4,17 +4,8 @@ import type { School } from '~/types/models'
 type Params = Record<string, unknown>
 
 export function useSchoolApi() {
-    const { public: { apiBase, apiToken } } = useRuntimeConfig()
+    const { public: { apiBase } } = useRuntimeConfig()
 
-    const headers = {
-        Authorization: `Bearer ${apiToken}`,
-        Origin: 'http://dashboard.kiddihub.test',
-    }
-
-    /**
-     * Paginated school list.
-     * Pass Ref values inside `params` for auto-refetch (e.g. { page: currentPage }).
-     */
     function list(params?: Params) {
         return useApiGet<PaginatedApiResponse<School>>(
             `${apiBase}/school/list`,
@@ -23,24 +14,18 @@ export function useSchoolApi() {
                 with: 'contact,customerSupport,saler',
                 ...params,
             },
-            { lazy: true, headers }
+            { lazy: true }
         )
     }
 
     function updateCustomerSupport(schoolId: number, customerSupportId: number | null) {
-        return $fetch(`${apiBase}/school/${schoolId}/customer-support`, {
-            method: 'POST',
-            body: { customer_support_id: customerSupportId },
-            headers,
+        return useApiPost(`${apiBase}/school/${schoolId}/customer-support`, {
+            customer_support_id: customerSupportId,
         })
     }
 
     function updateStatuses(schoolId: number, payload: { verify?: boolean; status?: boolean }) {
-        return $fetch(`${apiBase}/school/${schoolId}/statuses`, {
-            method: 'PUT',
-            body: payload,
-            headers,
-        })
+        return useApiPut(`${apiBase}/school/${schoolId}/statuses`, payload)
     }
 
     return { list, updateCustomerSupport, updateStatuses }

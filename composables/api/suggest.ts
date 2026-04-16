@@ -12,12 +12,7 @@ interface SuggestQuery {
 }
 
 export function useSuggestApi() {
-    const { public: { apiBase, apiToken } } = useRuntimeConfig()
-
-    const headers = {
-        Authorization: `Bearer ${apiToken}`,
-        Origin: 'http://dashboard.kiddihub.test',
-    }
+    const { public: { apiBase } } = useRuntimeConfig()
 
     async function get(node: string, queries: SuggestQuery): Promise<SuggestItem[]> {
         const params: Record<string, string> = {}
@@ -29,11 +24,7 @@ export function useSuggestApi() {
             params.compare = JSON.stringify(queries.compare)
         }
 
-        const response = await $fetch<SuggestApiResponse>(`${apiBase}/sg/${node}`, {
-            method: 'GET',
-            query: params,
-            headers,
-        })
+        const response = await useApiGetFetch<SuggestApiResponse>(`${apiBase}/sg/${node}`, params)
 
         return response.data ?? []
     }

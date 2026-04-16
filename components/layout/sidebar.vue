@@ -36,7 +36,7 @@
       <nav class="flex flex-col gap-1">
         <!-- Active Link -->
         <NuxtLink
-          to="/school/list"
+          to="/school"
           class="flex items-center gap-2 px-3 py-2 bg-green-100 text-green-600 rounded-md outline outline-1 outline-green-500"
         >
           <UIcon name="i-heroicons-building-office-2" class="w-5 h-5" />
